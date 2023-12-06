@@ -8,6 +8,20 @@ export default class Home extends React.Component {
     super(props);
     this.state={}
   } 
+  componentDidMount(){
+    this.get_theme();
+  }
+
+  async get_theme(){
+    try{
+    var res = await app.get('/customer/theme');
+    if(res.status){
+      this.setState({theme_data:res.data})      
+    }
+  } catch(error){
+    console.error("Error fetching data:", error);
+  }
+  }
 
   render() {
     const { home_data, theme_data, loading } = this.state;
