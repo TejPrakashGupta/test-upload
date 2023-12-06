@@ -1,111 +1,123 @@
+// if you want to fetch data using the same code but in different file the best way is to use a HOC component that works like React Query
+
+// in this file the issue was that 'apiUrl' is being used in the place of 'apiUrl', simply changing to apiUrl solves the problem
+
+// have a look at data fetch component 
+
+
 import React from 'react';
 import '../styles/globals.css'
-
 
 import axios from 'axios';
 import config from '../config';
 import getConfig from 'next/config';
+import { Query } from 'mongoose'
 const app = {};
+
 const { publicRuntimeConfig } = getConfig();
 // const apiUrl = publicRuntimeConfig.apiUrl;
 const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://rms.softreader.in:5000/api';
 
-
 var _token = '';
-if(typeof window !== 'undefined') 
-_token =  sessionStorage.getItem('rms_token')
+if (typeof window !== 'undefined')
+  _token = sessionStorage.getItem('rms_token')
 
-
-
-
-app.get = async (url,callback=function(){})=>{
+app.get = async (url, callback = function () { }) => {
   let config = {
-    headers: { 
-      Authorization: 'Bearer '+_token,
-    } 
-  } 
-    var data = {};
-    await axios.get(`${app.baseURL}${url}`,config)
-      .then(res => {
-        data = res.data;
-        callback(null,data)
-      }).catch(err=>{
-        callback(err)
-        data = err;
-      });
-      
-      return data;
+    headers: {
+      Authorization: 'Bearer ' + _token,
+    }
+  }
+  var data = {};
+
+  await axios.get(`${apiUrl}${url}`, config)
+    .then(res => {
+
+      data = res.data;
+      console.log(data)
+
+      callback(null, data)
+
+    }).catch(err => {
+      callback(err)
+      data = err;
+    });
+
+  return data;
 }
 
-app.post = async (url,body,callback=function(){})=>{
+app.post = async (url, body, callback = function () { }) => {
   // console.log("Token: ",_token )
   let config = {
     headers: {
-      Authorization: 'Bearer '+_token,
+      Authorization: 'Bearer ' + _token,
     }
   }
 
-    var data = {};
-    await axios.post(`${app.baseURL}${url}`,body,config)
-      .then(res => {
-        data = res.data;
-        callback(null,data)
-      }).catch(err=>{
-        callback(err)
-        data = err;
-      });
+  var data = {};
+  await axios.post(`${apiUrl}${url}`, body, config)
+    .then(res => {
+      data = res.data;
+      console.log(data)
+      callback(null, data)
+    }).catch(err => {
+      callback(err)
+      data = err;
+    });
 
-      return data;
+  return data;
 }
 
-app.put = async (url,body,callback=function(){})=>{
+app.put = async (url, body, callback = function () { }) => {
   let config = {
     headers: {
-      Authorization: 'Bearer '+_token,
+      Authorization: 'Bearer ' + _token,
     }
   }
 
-    var data = {};
-    await axios.put(`${app.baseURL}${url}`,body,config)
-      .then(res => {
-        data = res.data;
-        callback(null,data)
-      }).catch(err=>{
-        callback(err)
-        data = err;
-      });
+  var data = {};
+  await axios.put(`${apiUrl}${url}`, body, config)
+    .then(res => {
+      data = res.data;
+      console.log(data)
+      callback(null, data)
+    }).catch(err => {
+      callback(err)
+      data = err;
+    });
 
-      return data;
+  return data;
 }
 
-app.delete = async (url,body,callback=function(){})=>{
+app.delete = async (url, body, callback = function () { }) => {
   let headers = {
-      Authorization: 'Bearer '+_token,
-    } 
-    
+    Authorization: 'Bearer ' + _token,
+  }
 
-    var data = {};
-    await axios.delete(`${app.baseURL}${url}`, {data:body, headers})
-      .then(res => {
-        data = res.data;
-        callback(null,data)
-      }).catch(err=>{
-        callback(err)
-        data = err;
-      });
-      
-      return data;
+
+  var data = {};
+  await axios.delete(`${apiUrl}${url}`, { data: body, headers })
+    .then(res => {
+      data = res.data;
+      console.log(data)
+      callback(null, data)
+    }).catch(err => {
+      callback(err)
+      data = err;
+    });
+
+  return data;
 }
 
 global.app = app;
 
 function MyApp({ Component, pageProps }) {
   return (
-  <>
-  <Component {...pageProps} />
-  
-  </>
-)}
+    <>
+      <Component {...pageProps} />
+    </>
+  )
+}
 
 export default MyApp
 
