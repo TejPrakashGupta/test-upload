@@ -1,7 +1,5 @@
 import React from 'react';
 import '../styles/globals.css'
-import '../styles/App.css'
-import '../styles/Login.css'
 
 
 import { ToastContainer, toast } from 'react-toastify';
