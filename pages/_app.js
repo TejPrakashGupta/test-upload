@@ -3,10 +3,12 @@ import '../styles/globals.css'
 
 
 import axios from 'axios';
-
+import config from '../config';
+import getConfig from 'next/config';
 const app = {};
-
-app.baseURL = 'http://rms.softreader.in:5000/api'
+const { publicRuntimeConfig } = getConfig();
+// const apiUrl = publicRuntimeConfig.apiUrl;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://rms.softreader.in:5000/api';
 
 
 var _token = '';
