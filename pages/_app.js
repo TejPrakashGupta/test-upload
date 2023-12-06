@@ -1,9 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'react-toastify/dist/ReactToastify.css';
-
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import React from 'react';
 import '../styles/globals.css'
 import '../styles/App.css'
 import '../styles/Login.css'
