@@ -2,8 +2,6 @@ import React from 'react';
 import '../styles/globals.css'
 
 
-import { ToastContainer, toast } from 'react-toastify';
-
 import axios from 'axios';
 
 const app = {};
@@ -16,16 +14,6 @@ if(typeof window !== 'undefined')
 _token =  sessionStorage.getItem('rms_token')
 
 
-app.toast = (msg,type='default')=> {
-  const config = {autoClose:1500,position: toast.POSITION.BOTTOM_CENTER,hideProgressBar:true,type};
-    if(typeof msg == 'string')
-     return toast(msg, config);
-
-     msg.map(m=>{
-       toast(m,config)
-     })
-
-};
 
 
 app.get = async (url,callback=function(){})=>{
@@ -113,7 +101,7 @@ function MyApp({ Component, pageProps }) {
   return (
   <>
   <Component {...pageProps} />
-  <ToastContainer/>
+  
   </>
 )}
 
