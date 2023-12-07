@@ -4,7 +4,7 @@ import '../styles/globals.css'
 import axios from 'axios';
 import config from '../config';
 import getConfig from 'next/config';
-import { Query } from 'mongoose'
+// import { Query } from 'mongoose'
 const app = {};
 
 const { publicRuntimeConfig } = getConfig();
