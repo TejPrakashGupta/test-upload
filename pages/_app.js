@@ -25,7 +25,7 @@ app.get = async (url,callback=function(){})=>{
     } 
   } 
     var data = {};
-    await axios.get(`${app.baseURL}${url}`,config)
+    await axios.get(`${apiUrl}${url}`,config)
       .then(res => {
         data = res.data;
         callback(null,data)
@@ -46,7 +46,7 @@ app.post = async (url,body,callback=function(){})=>{
   }
 
     var data = {};
-    await axios.post(`${app.baseURL}${url}`,body,config)
+    await axios.post(`${apiUrl}${url}`,body,config)
       .then(res => {
         data = res.data;
         callback(null,data)
@@ -66,7 +66,7 @@ app.put = async (url,body,callback=function(){})=>{
   }
 
     var data = {};
-    await axios.put(`${app.baseURL}${url}`,body,config)
+    await axios.put(`${apiUrl}${url}`,body,config)
       .then(res => {
         data = res.data;
         callback(null,data)
@@ -85,7 +85,7 @@ app.delete = async (url,body,callback=function(){})=>{
     
 
     var data = {};
-    await axios.delete(`${app.baseURL}${url}`, {data:body, headers})
+    await axios.delete(`${apiUrl}${url}`, {data:body, headers})
       .then(res => {
         data = res.data;
         callback(null,data)
