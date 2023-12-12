@@ -1,7 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import Image from "next/image";
-import { DataFetchExample } from "./data-fetch-example";
+// import { DataFetchExample } from "./data-fetch-example";
 
 
 export default class Home extends React.Component {
