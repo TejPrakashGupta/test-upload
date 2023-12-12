@@ -5,7 +5,7 @@ export const DataFetchExample = () => {
     const [data, setData] = useState()
 
     //save this as an .env file
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://rms.softreader.in:5000/api';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://staging.flowerwale.com';
 
     //this is juct an example, create a HOC that takes, in url, endpoint, request method and process the query then returns only the results. It is much much more efficient and cleaner
     const getTheme = async () => {

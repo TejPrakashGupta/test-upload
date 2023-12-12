@@ -16,7 +16,7 @@ export default class Home extends React.Component {
 
   async get_theme() {
     try {
-      var res = await app.get('/customer/theme');
+      var res = await app.get('/customer/product_list/ajax_category_product_list');
 
       if (res.status) {
         this.setState({ theme_data: res.data })
